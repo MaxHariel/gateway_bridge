@@ -1,0 +1,13 @@
+GET http://localhost:3000/orders
+x-token:cfnil26n04s
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+x-token:cfnil26n04s
+
+{
+    "amount": 910,
+    "credit_card_name" : "Max",
+    "credit_card_number": "450000000"
+}

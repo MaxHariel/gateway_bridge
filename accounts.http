@@ -1,0 +1,9 @@
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{
+    "name" : "Hariel"
+}
+
+###
+GET http://localhost:3000/accounts/f26c7912-0735-404e-adbb-0c40834ba881
