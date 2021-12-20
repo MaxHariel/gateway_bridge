@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Producer } from '@nestjs/microservices/external/kafka.interface';
 import { InjectModel } from '@nestjs/sequelize';
+import { flatMap } from 'rxjs';
 import { EmptyResultError } from 'sequelize';
 import { AccountStorageService } from 'src/accounts/account-storage/account-storage.service';
 import { Account } from 'src/accounts/entities/account.entity';
@@ -22,16 +23,20 @@ export class OrdersService {
       ...createOrderDto,
       account_id: this.accountStorage.account.id,
     });
+    createOrderDto.id = order.id;
+    console.log('Opa ------> ', createOrderDto.id);
 
     this.kafkaProducer.send({
       topic: 'transactions',
       messages: [
         {
           key: 'transactions',
-          value: JSON.stringify(order),
+          value: JSON.stringify(createOrderDto),
         },
       ],
     });
+
+    return order;
   }
 
   findAll() {
