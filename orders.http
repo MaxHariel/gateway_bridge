@@ -2,12 +2,20 @@ GET http://localhost:3000/orders
 x-token:cfnil26n04s
 
 ###
+GET http://localhost:3000/orders/a886cf58-cf97-4e5d-b210-071fc7432146
+x-token:cfnil26n04s
+
+###
 POST http://localhost:3000/orders
 Content-Type: application/json
 x-token:cfnil26n04s
 
 {
-    "amount": 910,
-    "credit_card_name" : "Max",
-    "credit_card_number": "450000000"
+    "amount": 35.20,
+    "credit_card_name" : "Max Hariel",
+    "credit_card_number": "5387780900425744",
+    "credit_card_expiration_month":12,
+    "account_id": "a4f10a8c-3ff3-49c6-8465-c8c45c9d1240",
+    "credit_card_expiration_year":2022,
+    "credit_card_cvv":124
 }
